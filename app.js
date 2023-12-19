@@ -6,13 +6,15 @@ const Blog = require("./models/blog");
 
 const app = express();
 
-// connect to dtabase
-const dbURI =
-  "mongodb+srv://abdulazizztanvir:OKTW7jHKz1MDWq8g@learning.lbxlf5j.mongodb.net/?retryWrites=true&w=majority";
+app.use(morgan("dev"));
+
+// connect to the database
+const dbURI = "mongodb+srv://abdulazizztanvir:OKTW7jHKz1MDWq8g@learning.lbxlf5j.mongodb.net/?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI)
-  .then((result) => app.listen( process.env.PORT || 3000))
+  .then((result) => app.listen(process.env.PORT || 3000))
   .catch((err) => console.log(err));
+
 // register view engine
 app.set("view engine", "ejs");
 
@@ -21,7 +23,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(morgan("dev"));
+//app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.redirect("/blogs");
