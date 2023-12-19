@@ -11,7 +11,7 @@ const dbURI =
   "mongodb+srv://abdulazizztanvir:OKTW7jHKz1MDWq8g@learning.lbxlf5j.mongodb.net/?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI)
-  .then((result) => app.listen( process.env.PORT || 5000))
+  .then((result) => app.listen( process.env.PORT || 3000))
   .catch((err) => console.log(err));
 // register view engine
 app.set("view engine", "ejs");
